@@ -1,0 +1,60 @@
+{% extends 'posts/layout.html' %}
+{% load static %}
+{% block content %}
+	<section class="body">
+		<div class="row card login-box ">
+			
+			<div class="col s12 m4 l6">
+			  <div class="center-align">
+		        <span class="auth-head-icon"><i class="material-icons">person</i></span>
+		      </div>
+		       <h5 class="center-align " style="margin-bottom: 3rem !important;   margin-bottom: 0.75rem;">LOGIN</h5>
+				<div class="row">
+				    <form class="col s12" method="POST">
+				    	{% csrf_token %}
+				     <div class="row">
+				        <div class="input-field col s12">
+				          <i class="material-icons prefix">account_circle</i>
+				          {{ form.email}}
+				          <label for="icon_prefix">Email</label>
+				        </div>
+				    </div>
+				      <div class="row">
+				        <div class="input-field col s12">
+				        	 <i class="material-icons prefix">lock</i>
+				        	 {{form.password}}
+				          <label for="icon_prefix">Password</label>
+				        </div>
+				      </div> 
+				          <div class="flexbox mb-5 mt-4" style=" margin-bottom: 3rem !important;  margin-top: 1.5rem !important;">
+				            <label class="ui-switch switch-icon">
+				              <!-- Switch -->
+							  <div class="switch">
+							    <label>
+							      <input type="checkbox">
+							      <span class="lever"></span>
+							         Remember me
+							    </label>
+							  </div>
+				            </label>
+				    
+				           	<a href="javascript:;" >Forgot password?</a>
+				 
+				          </div>
+					  <button class="btn waves-effect waves-light col s12 "  style="border-radius: 15px;"   type="submit" >Login
+					  </button>
+				    </form>
+				  </div>
+			</div>
+			<div class="col s12 m4 l6 py-4" style="padding-top: 1.5rem !important; padding-right: 3rem !important; " >
+				     <div class="h2 mb-5 mt-3" style=" margin-top: 1rem !important;  font-size: 2rem; margin-bottom: 3rem !important;">Not a member?</div>
+			      <p>Register and get the following benefits.<br>Minim dolor in amet nulla laboris enim dolore.</p>
+			      <p><i class="ti-check mr-3 text-success" style="margin-right: 1rem !important;"></i>Lorem Ipsum dolar set.</p>
+			      <p><i class="ti-check mr-3 text-success" style="margin-right: 1rem !important;"></i>Lorem Ipsum dolar set.</p>
+			      <p class="mb-5"><i class="ti-check mr-3 text-success" style="margin-right: 1rem !important;"></i>Lorem Ipsum dolar set.</p>
+			      <a class="btn btn-outline-white btn-rounded btn-fix border-2x" href="{% url 'register' %}" style="border-radius: 15px;">Register</a>
+			</div>
+		</div>
+		
+	</section>
+{% endblock %}

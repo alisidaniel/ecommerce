@@ -1,0 +1,22 @@
+ <form class="col s12" method="POST" action="{% if action_url %} {{ action_url }} {% else %} {% url 'login' %} {% endif %}">
+    {% csrf_token %}
+    {% if next_url %}
+    <input type="hidden" name="next" value="{{next_url}}">
+    {% endif %}
+     <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">account_circle</i>
+          {{ form.email}}
+          <label for="icon_prefix">Email</label>
+        </div>
+    </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix"></i>
+          {{ form.password}}
+          <label for="icon_prefix"></label>
+        </div>
+    </div>
+	  <button class="btn waves-effect waves-light col s12 "  style="border-radius: 15px;"   type="submit" > Login or Continue as Guest
+	  </button>
+    </form>
