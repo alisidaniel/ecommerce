@@ -40,7 +40,6 @@
     </style>
 <body>
     <header>
-        <!-- style="background-color: white; border-radius: 25px; height: 30px; position: relative;" -->
     <nav>
       <div class="nav-wrapper">
         <a href="{% url 'index' %}" class="brand-logo">Company Logo</a>
@@ -88,30 +87,65 @@
     
 <footer class="page-footer">
     <div class="container">
+      <div class="row">
+        <p class="center-align">Trade Alert - Delivering the latest product trends and industry news straight to your inbox.</p>
+        <form  >
+          <div class="input-field col s12 l6 offset-l3">
+            <i class="material-icons prefix">message</i>
+            <input type="email" name="email" placeholder="Your email" class="white-text" >
+             <span >We’ll never share your email address with a third-party.</span>
+          </div>
+          <div class="col s12 l3"> 
+            <button class="btn waves-effect waves-light">Subcribe 
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+           
+        </form>
+      </div>
         <div class="row">
-        <div class="col l6 s12">
-            <h5 class="white-text">Footer Content</h5>
-            <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-        </div>
-        <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">Links</h5>
+          <div class="col s12 l3">
+            <h5 class="white-text">Cutomer Services</h5>
             <ul>
-            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Help Center</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">COntact us</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Report Abuse</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Submit a Dispute</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Policies & Rules</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Get Paid for Your Feedback</a></li>
+            </ul>
+        </div>
+        <div class="col s12 l3">
+            <h5 class="white-text">About Us</h5>
+            <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">About Netsaleshop.com</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">About Netsaleshop Group</a></li>
+            </ul>
+        </div>
+           <div class="col s12 l3">
+            <h5 class="white-text">Buy on Netsaleshop.com</h5>
+            <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">All Categories</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Request for Quotation</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Ready to ship</a></li>
+            </ul>
+        </div>
+           <div class="col s12 l3">
+            <h5 class="white-text">Sell on Netsaleshop.com</h5>
+            <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">Supllier Memberships</a></li>
             </ul>
         </div>
         </div>
     </div>
     <div class="footer-copyright">
         <div class="container">
-        © 2014 Copyright Text
+        © 2019 Copyright Text
         <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
         </div>
     </div>
     </footer>  
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="{% static 'js/jquery-2.2.4.min.js' %}"></script>
 <script src="{% static 'js/smoothproducts.min.js' %}"></script>
 <!-- Django Secure Ajax JS -->
 <script src="{% static 'js/csrf_ajax.js' %}"></script>
@@ -128,6 +162,16 @@
 </script>
 <script type="text/javascript">
   $(document).ready(function(){
+    $('.dropdown-trigger').dropdown({
+          inDuration: 300,
+          outDuration: 225,
+          constrain_width: false, // Does not change width of dropdown to that of the activator
+          hover: true, // Activate on hover
+          gutter: ($('.dropdown-content').width()*3)/2.5 + 5, // Spacing from edge
+          belowOrigin: false, // Displays dropdown below the button
+          alignment: 'left' // Displays dropdown with edge aligned to the left of button
+        }
+      );
       $('input[type="checkbox"]').click(function(){
         // event.preventDefault();
           if($(this).is(":checked")){

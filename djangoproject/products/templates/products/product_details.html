@@ -18,17 +18,17 @@
 	      </div> -->
 	    <div class="sp-loading  "><img src="{% static 'images/sp-loading.gif' %}" alt=""><br>LOADING IMAGES</div>
 		<div class="sp-wrap">
-			<a href="{% static 'images/1.jpg' %}"><img src="{% static 'images/1_tb.jpg' %}" alt=""></a>
-			<a href="{% static 'images/2.jpg' %}"><img src="{% static 'images/2_tb.jpg' %}" alt=""></a>
+				<a href="{{object.image.url}}"><img src="{{object.image.url}}" alt=""></a>
+		<!-- 	<a href="{% static 'images/2.jpg' %}"><img src="{% static 'images/2_tb.jpg' %}" alt=""></a>
 			<a href="{% static 'images/3.jpg' %}"><img src="{% static 'images/3_tb.jpg' %}" alt=""></a>
 			<a href="{% static 'images/4.jpg' %}"><img src="{% static 'images/4_tb.jpg' %}" alt=""></a>
 			<a href="{% static 'images/5.jpg' %}"><img src="{% static 'images/5_tb.jpg' %}" alt=""></a>
-			<a href="{% static 'images/6.jpg' %}"><img src="{% static 'images/6_tb.jpg' %}" alt=""></a>
+			<a href="{% static 'images/6.jpg' %}"><img src="{% static 'images/6_tb.jpg' %}" alt=""></a> -->
 		</div>
 	      <div class="card-stacked">
 	        <div class="card-content">
 	         <p>
-	         	 <p>Sealed in Box 17.3inch MSI GL73 8RC-032 Full HD Gaming Laptop i7-8750H GTX 1070 16GB DDR4/ 1TB 256G ssd </p>
+	         	 <p>{{object.description}}</p>
 	         </p>
 	         <p style="margin-top: 0.5rem;">
 	         	FOB Reference Price: <a class="waves-effect waves-light modal-trigger" href="#modal1"> Get Latest Price</a>
@@ -45,7 +45,7 @@
 				 <!-- Modal Structure  End -->
 	         </p>
 	         <p style="margin-top: 0.5rem;">
-	         	$200.00 - $400.00 / Pieces | 2 Piece/Pieces (Min. Order)
+	         	$ {{object.price}} / Piece | {{object.quantity}} (in. Stock)
 	         </p>
 	         <p style="margin-top: 0.5rem;">
 	         	Color: Yellow

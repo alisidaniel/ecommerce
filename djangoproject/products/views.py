@@ -1,19 +1,20 @@
 from django.views.generic import ListView, DetailView
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404
+from analytics.mixins import ObjectViewedMixin
 from .models import Product
 from cart.models import Cart
 
 # Create your views here.
-def product_details(request, pk=None, *args, **kwargs):
-	if pk:
-		instance = get_object_or_404(Product, pk=pk)
-	else:
-		raise Http404("Product doesn't exist")
-	context  = {
-	'object' : instance
-	}
-	return render(request, "products/product_details.html", context)
+# def product_details(request, pk=None, *args, **kwargs):
+# 	if pk:
+# 		instance = get_object_or_404(Product, pk=pk)
+# 	else:
+# 		raise Http404("Product doesn't exist")
+# 	context  = {
+# 	'object' : instance
+# 	}
+# 	return render(request, "products/product_details.html", context)
 
 class ProductFeaturedListView(ListView):
 	template_name = "products/list.html"
@@ -21,7 +22,7 @@ class ProductFeaturedListView(ListView):
 		request = self.request
 		return Product.objects.featured()
 
-class ProductFeaturedDetailView(DetailView):
+class ProductFeaturedDetailView(ObjectViewedMixin, DetailView):
 	template_name = "products/featured-details.html"
 	def get_queryset(self, *args, **kwargs):
 		request = self.request
@@ -37,7 +38,7 @@ class product_view(ListView):
 		context['cart'] = cart_obj
 		return context
 
-class product_view_slug(DetailView):
+class product_view_slug(ObjectViewedMixin, DetailView):
 	queryset = Product.objects.all()
 	template_name = "products/product_details.html"
 
@@ -60,6 +61,7 @@ class product_view_slug(DetailView):
 			instance =qs.first()
 		except:
 			raise Http404(" Big Problem")
+		#object_viewed_signal.send(instance.__class__, instance=instance, request=request)
 		return instance
 
 class cart(ListView):
