@@ -1,64 +1,48 @@
-{% extends 'posts/layout.html' %}
+{% extends 'views/snippets/layouts.html' %}
 {% load static %}
 {% block content %}
-	<section class="body">
-		<div class="row card login-box ">
-			
-			<div class="col s12 m4 l6">
-			  <div class="center-align">
-		        <span class="auth-head-icon"><i class="material-icons">person</i></span>
-		      </div>
-		       <h5 class="center-align " style="margin-bottom: 3rem !important;   margin-bottom: 0.75rem;">Register</h5>
-				<div class="row">
-				    <form class="col s12" method="POST">
-				    	{% csrf_token %}
-				    <div class="row">
-				        <div class="input-field col s12">
-				          <i class="material-icons prefix">account_circle</i>
-				          {{ form.username}}
-				          <label for="icon_prefix">Username</label>
-				        </div>
-				    </div>
-				     <div class="row">
-				        <div class="input-field col s12">
-				          <i class="material-icons prefix">message</i>
-				          {{ form.email}}
-				          <label for="icon_prefix">Email</label>
-				        </div>
-				    </div>
-				      <div class="row">
-				        <div class="input-field col s12">
-				        	 <i class="material-icons prefix">lock</i>
-				        	 {{form.password1}}
-				          <label for="icon_prefix">Password</label>
-				        </div>
-				      </div> 
-				       <div class="row">
-				        <div class="input-field col s12">
-				        	 <i class="material-icons prefix">lock</i>
-				        	 {{form.password2}}
-				          <label for="icon_prefix">Confirm Password</label>
-				        </div>
-				      </div> 
-				          <div class="flexbox mb-5 mt-4" style=" margin-bottom: 3rem !important;  margin-top: 1.5rem !important;">
-				            <label class="ui-switch switch-icon">
-							      <a href="javascript:;" >Already have an account?</a>
-				            </label>
-				          </div>
-					  <button class="btn waves-effect waves-light col s12 "  style="border-radius: 15px;"   type="submit" >Login
-					  </button>
-				    </form>
-				  </div>
-			</div>
-			<div class="col s12 m4 l6 py-4" style="padding-top: 1.5rem !important; padding-right: 3rem !important; " >
-				  <div class="h2 mb-5 mt-3" style=" margin-top: 1rem !important;  font-size: 2rem; margin-bottom: 3rem !important;">Not a member?</div>
-			      <p>Register and get the following benefits.<br>Minim dolor in amet nulla laboris enim dolore.</p>
-			      <p><i class="ti-check mr-3 text-success" style="margin-right: 1rem !important;"></i>Lorem Ipsum dolar set.</p>
-			      <p><i class="ti-check mr-3 text-success" style="margin-right: 1rem !important;"></i>Lorem Ipsum dolar set.</p>
-			      <p class="mb-5"><i class="ti-check mr-3 text-success" style="margin-right: 1rem !important;"></i>Lorem Ipsum dolar set.</p>
-			      <a class="btn btn-outline-white btn-rounded btn-fix border-2x" href="{% url 'login' %}" style="border-radius: 15px;">Login</a>
-			</div>
-		</div>
-		
-	</section>
+	 <div class="row login-box shadow">
+    <div class="col-6 bg-white p-4x">
+      <div class="text-center">
+        <span class="auth-head-icon"><i class="fas fa-user"></i></span>
+      </div>
+      <div class="p-4">
+        <h4 class="card-title text-center mb-5">Register</h4>
+        <form method="POST">
+        	{% csrf_token %}
+          <div class="md-form mb-4">
+            {{form.username}}
+            <label>Username</label>
+          </div>
+          <div class="md-form mb-4">
+            {{form.email}}
+            <label>Email</label>
+          </div>
+          <div class="md-form mb-4">
+            {{form.password1}}
+            <label>Password</label>
+          </div>
+           <div class="md-form mb-4">
+            {{form.password2}}
+            <label>Confirm Password</label>
+          </div>
+          <!--  <div class="flexbox mb-3 mt-1">
+  			 <a href="{% url 'login' %}">Already a user? login</a>
+  		  </div>
+ -->          <button type="submit" class="btn btn-primary btn-rounded btn-block mb-2">Sign Up</button>
+        </form>
+      </div>
+    </div>
+    <div class="col-6 text-white py-4 px-5" style="background-color: #4a5ab9;">
+      <div class="h2 mb-5 mt-3">Not a member?</div> 
+      <p>By creating an account,<br>you agree to Amazon's Conditions of Use and Privacy Notice.</p>
+      <p><i class="fas fa-check mr-3 text-success"></i>Save Time.</p>
+      <p><i class="fas fa-check mr-3 text-success"></i>Save Money.</p>
+      <p class="mb-4"><i class="fas fa-check mr-3 text-success"></i>Enjoy wide range of products and services.</p>
+      <a href="{% url 'login' %}"><button class="btn btn-outline-white btn-block mb-3 btn-rounded btn-fix border-2x">Login</button></a> 
+      <button type="button" class="btn btn-fb btn-rounded btn-block mb-3 btn-outline-white-fb"><i class="fab fa-facebook-f pr-1"></i> Facebook</button>
+      <button type="button" class="btn btn-gplus btn-rounded btn-block btn-outline-white-google" ><i class="fab fa-google-plus-g pr-1"></i> Google +</button>
+    </div>
+  </div>
 {% endblock %}
+

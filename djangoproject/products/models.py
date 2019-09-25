@@ -3,6 +3,7 @@ import os
 from django.db import models
 from datetime import datetime
 from django.db.models import Q
+from django.urls import reverse
 from django.db.models.signals import pre_save
 from djangoproject.utils import unique_slug_generator
 
@@ -40,11 +41,41 @@ class ProductManager(models.Manager):
 		qs = self.get_queryset().filter(id=id)
 		if qs.count() == 1:
 			return qs.first()
-		return None
+		return qs
 	def search(self, query):
 		return self.get_queryset().active().search(query)
 
 # Create your models here.
+class Category(models.Model):
+	title  = models.CharField(max_length=255)
+	slug   = models.SlugField(unique=True, blank=True, null=True)
+	parent = models.SmallIntegerField(null=True)
+	created_at = models.DateTimeField(auto_now_add=True)
+	updated_at = models.DateTimeField(auto_now=True)
+
+	class Meta:
+		ordering = ('title',)
+		index_together = (('id','slug'),)  
+
+	def __str__(self):
+		return self.title
+
+	def get_absolute_url(self):
+		return reverse('categories_display', args=[self.id, self.slug])
+
+	@property
+	def get_products(self):
+		return Product.objects.filter(categories__title=self.title)
+
+class Manufacturer(models.Model):
+ 	image = models.FileField(null=True, blank=True)
+ 	name  = models.CharField(max_length=255)
+ 	slug  = models.SlugField(unique=True)
+
+ 	def __str__(self):
+ 		return self.name
+ 	
+
 class Product(models.Model):
 	title 			= models.CharField(max_length=120)
 	slug 			= models.SlugField(blank=True, unique=True)
@@ -52,7 +83,12 @@ class Product(models.Model):
 	description 	= models.TextField()
 	quantity 		= models.IntegerField(null=True)
 	price 			= models.DecimalField(decimal_places=2, max_digits=20, default=0.00)
-	image 			= models.ImageField(upload_to=upload_image_path, null=True, blank=True)
+	image 			= models.ImageField(upload_to=upload_image_path)
+	image_1 		= models.ImageField(upload_to=upload_image_path, null=True, blank=True)
+	image_2 		= models.ImageField(upload_to=upload_image_path, null=True, blank=True)
+	image_3 		= models.ImageField(upload_to=upload_image_path, null=True, blank=True)
+	categories      = models.ManyToManyField(Category, null=True, blank=True, related_name='products')
+	Manufacturer 	= models.ForeignKey(Manufacturer, null=True, blank=True, on_delete=models.CASCADE)
 	featured 		= models.BooleanField(default=False)
 	active 			= models.BooleanField(default=True)
 	created_at 		= models.DateTimeField(datetime.now, blank=True)

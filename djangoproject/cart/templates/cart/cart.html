@@ -2,40 +2,54 @@
 {% load static %}
 {% block content %}
 <div class="row">
-<div class="col s12 l8 offset 4">
+<div class="col">
 	{% if cart.products.exists %}
 	<table class="table cart-table">
 		<thead>
 			<tr>
 				<th>#</th>
 				<th>Product Name</th>
-				<th>Product Price</th>
+				<th>Quantity</th>
+				<th>Price</th>
 			</tr>
 		</thead>
 		<tbody class="cart-body">
 			{% for product in cart.products.all %}
 			<tr class="cart-product">
 				<td>{{ forloop.counter }}</td>
-				<td><a href="{{ product.get_absolute_url }}">{{ product.title }}</a>
-			<form class="form-product-ajax" method="POST" action="{% url 'cart:update' %}" data-endpoint="{% url 'cart:update' %}">
-	        	{% csrf_token %}
-	          	 <input type="hidden" name="product_id" value="{{ product.id }}">
-	         	 <button type="submit" class=" btn-danger waves-effect waves-light">Remove</button>
-	        </form>
+				<td>
+					<a href="{{ product.get_absolute_url }}">
+						{{ product.title }}
+					</a>
+					<form class="form-product-ajax" method="POST" action="{% url 'cart:update' %}" data-endpoint="{% url 'cart:update' %}">
+				    	{% csrf_token %}
+				      	 <input type="hidden" name="product_id" value="{{ product.id }}">
+				     	 <button type="submit" class=" btn-danger waves-effect waves-light">Remove</button>
+				    </form>
 				</td>
-				<td>{{ product.price }}</td>
+				<td>
+					<form method="POST">{% csrf_token %}
+						<input type="hidden" name="product_id" value="{{ product.id }}">
+						<i class="material-icons" style="cursor: default;">remove</i>
+					 		<span>{{product.quantity}} </span>
+					 	<i class="material-icons" style="cursor: default;">add</i>
+				 	</form>
+				</td>
+				<td>
+					{{ product.price }}
+				</td>
 			</tr>
 			{% endfor %}
 			<tr>
-				<td colspan="2"></td>
+				<td colspan="3"></td>
 				<td><b>Subtotal: </b><span class="cart-subtotal">{{ cart.subtotal }} </span></td>
 			</tr>
 			<tr>
-				<td colspan="2"></td>
+				<td colspan="3"></td>
 				<td><b>Total: </b><span class="cart-total">{{ cart.total }}</span></td>
 			</tr>
 			<tr>
-				<td colspan="2"></td>
+				<td colspan="3"></td>
 				<td><a class="btn" href="{% url 'cart:checkout' %} "> Checkout</a></td>
 			</tr>
 		</tbody>
@@ -48,4 +62,6 @@
 	{% endif %}
 </div>
 </div>
+
+
 {% endblock %}

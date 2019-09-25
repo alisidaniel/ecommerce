@@ -1,0 +1,149 @@
+/* CSS For ScrollTop */
+.back-to-top {
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+ /*   right: 20px;*/
+    display:none;
+}
+/* Hide Navbar on Scroll Down Start */
+
+.navbar{
+/*  position: fixed;*/
+  top: 0;
+/*  display: block;*/
+  transition: top 0.3s;
+  padding: 20px 0 5px;
+  height: 10%;
+  background-color: #5d30ad;
+}
+.navbar-nav{
+float: left;
+}
+
+.jumbotron{
+    background-color: #673ab7;
+    color: #ffffff;
+}
+/* Hide Navbar on Scroll Down ends*/
+.icon-block-grid {
+    position: relative;
+    overflow: hidden;
+    padding: 40px 30px 20px 30px;
+    min-height: 310px;
+    transition: all 0.3s ease;
+}
+.icon-block-grid:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.mid{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.footer-copyright{
+background-color: #5d30ad;
+padding: 25px 0 7px;
+}
+.page-footer{
+    color: #ffffff;
+    background-color: #673ab7;
+}
+
+/*  Material Button for bootstrap with waves effect */
+.wpb_wrapper{
+  margin-top: 20px;
+}
+.portfolio-item .thumb img {
+      width: 100%;
+    height: auto;
+    display: block;
+  }
+
+/*-----------------------------------------------------------------------------------*/
+/*  Portfolio
+/*-----------------------------------------------------------------------------------*/
+
+#portfolio {
+  position: relative;
+  padding-bottom: 50px;
+}
+
+#portfolio .portfolio-list {
+  margin-bottom: 50px;
+}
+
+#portfolio .portfolio-list .nav {
+  display: inline-block;
+  margin: 0;
+}
+
+#portfolio .portfolio-list .nav li {
+  margin: 0 40px 0 0;
+  float: left;
+  font-size: 14px;
+  color: #999999;
+  line-height: 16px;
+  cursor: pointer;
+  font-family: 'Poppins', helvetica;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
+  -moz-transition: all 0.5s ease-in-out 0s;
+  -ms-transition: all 0.5s ease-in-out 0s;
+  -o-transition: all 0.5s ease-in-out 0s;
+  -webkit-transition: all 0.5s ease-in-out 0s;
+  transition: all 0.5s ease-in-out 0s;
+}
+
+#portfolio .portfolio-list .nav li:hover, #portfolio .portfolio-list .nav li.filter-active  {
+  color: #b8a07e;
+  -moz-transition: all 0.5s ease-in-out 0s;
+  -ms-transition: all 0.5s ease-in-out 0s;
+  -o-transition: all 0.5s ease-in-out 0s;
+  -webkit-transition: all 0.5s ease-in-out 0s;
+  transition: all 0.5s ease-in-out 0s;
+}
+
+#portfolio .portfolio-container {
+  display: inline-block;
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+.portfolio-thumbnail {
+  margin-bottom: 30px;
+  overflow: hidden;
+  min-height: 260px;
+}
+
+.portfolio-thumbnail img {
+  max-width: 100%;
+}
+.paddsection {
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+
+.paddsections {
+  padding-top: 90px;
+  padding-bottom: 90px !important;
+}
+/*-----------------------------------------------------------------------------------*/
+/*  Contact
+/*-----------------------------------------------------------------------------------*/
+
+#contact {
+  height: auto;
+  width: 100%;
+}
+
+.contact-details {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-top: 9rem;
+
+}
+
+.contact-details li {
+  padding-bottom: 0px;
+}

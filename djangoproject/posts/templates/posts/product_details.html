@@ -1,15 +1,13 @@
 {% extends 'posts/layout.html' %}
 {% load static %}
 {% block content %}
- <nav>
-    <div class="nav-wrapper">
-      <div class="col s12">
-        <a href="{% url 'index' %}" class="breadcrumb">Home</a>
-        <a href="#!" class="breadcrumb">Apps</a>
-        <a href="#!" class="breadcrumb">Product Details</a>
-      </div>
-    </div>
-  </nav>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="#">Apps</a></li>
+    <li class="breadcrumb-item active">Product Details</li>
+  </ol>
+</nav>
 <div class="row">
 	<div class="col s12 l9">
 	    <div class="card horizontal">
@@ -107,49 +105,60 @@
 			</div>
 	    <div id="test2" class="col s12 ">Test 2</div>
    </div>
-   <div class="col s12 l3" >
-   	<span class="Title">You may like</span>
-    <div class="card horizontal">
-      <div class="card-image">
-        <img src="https://lorempixel.com/100/190/nature/6">
-      </div>
-      <div class="card-stacked">
-        <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information.</p>
+   <div class="col-3" >
+   <div class="containers shoe">
+        <div class="productImage shoeImg"></div>
+        <div class="size shoeSize">
+          <h4>SIZE</h4>
+          <ul>
+            <li>9</li>
+            <li>8</li>
+            <li>7</li>
+          </ul>
         </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
+        <div class="price shoePrice">
+          <h4>PRICE</h4>
+          <span>$150</span>
         </div>
-      </div>
-    </div>
-
-     <div class="card horizontal">
-      <div class="card-image">
-        <img src="https://lorempixel.com/100/190/nature/6">
-      </div>
-      <div class="card-stacked">
-        <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information.</p>
+        <div class="color shoeColor">
+          <h4>COLORS</h4>
+          <ul>
+            <li><span class="blue"></span></li>
+            <li><span class="yellow"></span></li>
+            <li><span class="red"></span></li>
+          </ul>
         </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
-        </div>
-      </div>
-    </div>
-
-     <div class="card horizontal">
-      <div class="card-image">
-        <img src="https://lorempixel.com/100/190/nature/6">
-      </div>
-      <div class="card-stacked">
-        <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information.</p>
-        </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
+        <div class="productName shoeName">
+          Nike Air Max
         </div>
       </div>
-    </div>
+      <div class="containers shirt">
+        <div class="productImage shirtImg"></div>
+        <div class="size shirtSize">
+          <h4>SIZE</h4>
+          <ul>
+            <li>S</li>
+            <li>M</li>
+            <li>L</li>
+          </ul>
+        </div>
+        <div class="price shirtPrice">
+          <h4>PRICE</h4>
+          <span>$50</span>
+        </div>
+        <div class="color shirtColor">
+          <h4>COLORS</h4>
+          <ul>
+            <li><span class="blue"></span></li>
+            <li><span class="yellow"></span></li>
+            <li><span class="red"></span></li>
+          </ul>
+        </div>
+        <div class="productName shirtName">
+          Crew-neck t-shirt
+        </div>
+      </div>    
+        </div>
    </div> 
   </div>
 

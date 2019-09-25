@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Alishopcarts - login page</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link href="{% static 'material/css/bootstrap.min.css' %}" rel="stylesheet" media="screen,projection"/>
+    <link href="{% static 'material/css/font-awesome.min.css' %}" rel="stylesheet" media="screen,projection">
+    <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet" media="screen,projection">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link href="{% static 'material/themify-icons/css/themify-icons.css' %}" rel="stylesheet" media="screen,projection">
+    <link href="{% static 'material/fontawesome/css/fontawesome-all.min.css' %}" rel="stylesheet" media="screen,projection">
+   <style type="text/css">
+      html, body {height: 100%}
+      body {
+        padding: 40px 15px;
+      }
+      .login-box {
+        width: 100%;
+        max-width: 900px;
+        margin: auto;
+      }
+      .auth-head-icon {
+        position: relative;
+        height: 60px;
+        width: 60px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        background-color: #fff;
+        color: #5c6bc0;
+        box-shadow: 0 5px 20px #d6dee4;
+        border-radius: 50%;
+        transform: translateY(-50%);
+        z-index: 2;
+      }
+    </style>
+</head>
+<body class="d-flex align-itmes-center" style="background-color: #f2f3fa;">
+ {% block content %}
+
+  {% endblock %}
+
+<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'material/js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'material/js/jquery2.min.js' %}"></script>
+</body>
+</html>

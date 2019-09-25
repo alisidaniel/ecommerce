@@ -5539,12 +5539,16 @@ button.btn-floating {
 .btn-block {
   display: block;
 }
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 
 .dropdown-content {
   background-color: #fff;
   margin: 0;
   display: none;
-  min-width: 100px;
+  min-width: 300px;
   overflow-y: auto;
   opacity: 0;
   position: absolute;

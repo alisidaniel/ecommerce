@@ -7,43 +7,43 @@ User = get_user_model()
 class GuestForm(forms.Form):
 	email = forms.EmailField(max_length = 100, widget=forms.EmailInput(
 	attrs={
-	"id": "icon_prefix",
-	"class": "validate",
+	"class": "md-form form-control validate",
+
 	}))
 
 class LoginForm(forms.Form):
 	email = forms.EmailField(max_length = 100, widget=forms.EmailInput(
 		attrs={
-		"id": "icon_prefix",
-		"class": "validate",
+		"class": "form-control validate",
+		"id": "form1",
 		}))
 	password = forms.CharField(max_length = 100, widget=forms.PasswordInput(
 		attrs={
-		"id": "icon_prefix",
-		"class": "validate",
+		"class": "form-control validate",
+		"id": "form2",
 		}))
 
 
 class RegisterForm(forms.ModelForm):
 	username = forms.CharField(widget=forms.TextInput(
     	attrs={
-		"id": "icon_prefix username",
-		"class": "validate",
+		"id": "username",
+		"class": "md-form-control validate",
 		}))
 	email = forms.EmailField(widget=forms.EmailInput(
 		attrs={
-		"id": "icon_prefix email",
-		"class": "validate",
+		"id": "email",
+		"class": "md-form-control validate",
 		}))
 	password1 = forms.CharField(widget=forms.PasswordInput(
 		attrs={
-		"id": "icon_prefix password",
-		"class": "validate",
+		"id": "password",
+		"class": "md-form-control validate",
 		}))
 	password2 =forms.CharField(widget=forms.PasswordInput(
 		attrs={
-		"id": "icon_prefix password2",
-		"class": "validate",
+		"id": "password2",
+		"class": "md-form-control validate",
 		}))
 	class Meta:
 		model  = User

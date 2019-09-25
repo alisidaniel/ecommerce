@@ -18,12 +18,17 @@
 	      </div> -->
 	    <div class="sp-loading  "><img src="{% static 'images/sp-loading.gif' %}" alt=""><br>LOADING IMAGES</div>
 		<div class="sp-wrap">
-				<a href="{{object.image.url}}"><img src="{{object.image.url}}" alt=""></a>
-		<!-- 	<a href="{% static 'images/2.jpg' %}"><img src="{% static 'images/2_tb.jpg' %}" alt=""></a>
-			<a href="{% static 'images/3.jpg' %}"><img src="{% static 'images/3_tb.jpg' %}" alt=""></a>
-			<a href="{% static 'images/4.jpg' %}"><img src="{% static 'images/4_tb.jpg' %}" alt=""></a>
-			<a href="{% static 'images/5.jpg' %}"><img src="{% static 'images/5_tb.jpg' %}" alt=""></a>
-			<a href="{% static 'images/6.jpg' %}"><img src="{% static 'images/6_tb.jpg' %}" alt=""></a> -->
+			<a href="{{object.image.url}}"><img src="{{object.image.url}}" alt=""></a>
+			{% if object.image_1 %}
+				<a href="{{object.image_1.url}}"><img src="{{object.image_1.url}}" alt=""></a>
+			{% endif %}
+			{% if object.image_2 %}
+				<a href="{{object.image_2.url}}"><img src="{{object.image_2.url}}" alt=""></a>
+			{% endif %}
+			{% if object.image_3 %}
+				<a href="{{object.image_3.url}}"><img src="{{object.image_3.url}}" alt=""></a>
+			{% endif %}
+<!--  -->
 		</div>
 	      <div class="card-stacked">
 	        <div class="card-content">

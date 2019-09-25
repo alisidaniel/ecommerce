@@ -2,32 +2,10 @@ from django.views.generic import ListView, DetailView
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from analytics.mixins import ObjectViewedMixin
-from .models import Product
+from .models import Product, Category
 from cart.models import Cart
 
 # Create your views here.
-# def product_details(request, pk=None, *args, **kwargs):
-# 	if pk:
-# 		instance = get_object_or_404(Product, pk=pk)
-# 	else:
-# 		raise Http404("Product doesn't exist")
-# 	context  = {
-# 	'object' : instance
-# 	}
-# 	return render(request, "products/product_details.html", context)
-
-class ProductFeaturedListView(ListView):
-	template_name = "products/list.html"
-	def get_queryset(self, *args, **kwargs):
-		request = self.request
-		return Product.objects.featured()
-
-class ProductFeaturedDetailView(ObjectViewedMixin, DetailView):
-	template_name = "products/featured-details.html"
-	def get_queryset(self, *args, **kwargs):
-		request = self.request
-		return Product.objects.featured()
-
 class product_view(ListView):
 	queryset = Product.objects.all()
 	template_name = "products/product_page.html"
@@ -36,6 +14,21 @@ class product_view(ListView):
 		context  = super(product_view, self).get_context_data(*args, **kwargs)
 		cart_obj, new_obj = Cart.objects.new_or_get(self.request)
 		context['cart'] = cart_obj
+		return context
+
+class category_slug_view(DetailView):
+	queryset = Product.objects.all()
+	print(queryset)
+	template_name = "products/product_page.html"
+
+	def get_context_data(self, *args, **kwargs):
+		context  = super(category_slug_view, self).get_context_data(*args, **kwargs)
+		cart_obj, new_obj = Cart.objects.new_or_get(self.request)
+		# c_id = self.kwargs.get('id')
+		cat = self.kwargs.get('slug')
+		# print(c_id)
+		product_list  = Product.objects.filter(categories__slug=cat)
+		context['object_list'] = product_list 
 		return context
 
 class product_view_slug(ObjectViewedMixin, DetailView):
@@ -49,7 +42,7 @@ class product_view_slug(ObjectViewedMixin, DetailView):
 		return context
 
 	def get_object(self, *args, **kwargs):
-		request =self.request
+		request = self.request
 		slug = self.kwargs.get('slug')
 		#instance = get_object_or_404(Product, slug=slug, active=True)
 		try:

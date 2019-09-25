@@ -40,12 +40,38 @@
 		</div>
 		</div>
 		{% else %}
+			{% if not has_card %}
+			<div class="row">
+				<div class="col s12 l4 offset-l4">
+			<script src="https://js.stripe.com/v3/"></script>
+			<h4>Add Payment Method</h4>
+			 <form class="payment-form" action="{% url 'billing-payement-method-endpoint' %}" data-endpoint="{% url 'billing-payement-method-endpoint' %}" method="POST" id="payment-form" data-token="{{ publish_key }}"
+			 data-next-url="{% if next_url %} {{next_url}} {% endif %}">{% csrf_token %}
+			  <div class="form-row">
+			    <label for="card-element" >
+				 Credit or debit card
+			    </label>
+			    <div id="card-element" class="input-field ">
+			<!--   Stripe Element will be inserted here. -->
+			    </div>
+
+			    <!-- Used to display form errors. -->
+			    <div id="card-errors" role="alert"></div>
+			  </div>
+
+			  <button class="btn">Add Payment Method</button>
+			</form> 
+		   			
+				</div>
+			</div>
+			{% else %}
 		<div class="row">
 			<div class="col s12 l6 offset-l4">
 				<h5>Finalize Checkout</h5>
 				<p><b>Cart Items: </b> {% for product in object.cart.products.all %} {{product}} {% if not forloop.last %}, {% endif %} {% endfor %}</p>
 				<p><b>Shipping Address: </b> {{ object.shipping_address.get_address  }}</p>
 				<p><b>Billing Address: </b> {{ object.shipping_address.get_address }}</p>
+				<p><b>Payment Method: </b> {{ billing_profile.default_card }} (<a href="{{billing_profile.get_payment_method_url}}?next={{build_absolute_uri}}">Change</a>)</p>
 				<p><b>Cart Total: </b> {{ object.cart.total }}</p>
 				<p><b>Shipping Total: </b> {{ object.shipping_total }}</p>
 				<p><b> Order Total: </b> {{ object.total }} </p>
@@ -55,6 +81,7 @@
 				</form>
 			</div>
 		</div>
+		{% endif %}
 		{% endif %}
 {% endif %}
 {% endblock %}

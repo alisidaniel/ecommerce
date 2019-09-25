@@ -1,0 +1,21 @@
+{% extends 'posts/layout.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+	<div class="col s12 l6 offset-l3">
+	{% if title %} <h3>{{title}}</h3> {% endif %}
+	 <form  method="POST" action="{% if action_url %} {{ action_url }} {% endif %}">
+	    {% csrf_token %}
+	    {% if next_url %}
+	      <input type="hidden" name="next" value="{{next_url}}"/>
+	    {% endif %}       
+		 <p>
+		 	{{ form }}
+     	 </p>
+      </label>
+	  <button class="btn waves-effect waves-light"  style="border-radius: 15px;"   type="submit" >Save
+	  </button>
+	</form>
+	</div>
+</div>
+{% endblock %}
